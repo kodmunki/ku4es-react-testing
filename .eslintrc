@@ -73,6 +73,7 @@
     "react/self-closing-comp": 2,
     "react/sort-comp": 0,
     "sort-prop-types": 0,
+    "react/prop-types": 0,
     "react/jsx-wrap-multilines": 2,
     "react/jsx-boolean-value": 0,
     "react/jsx-closing-bracket-location": 0,

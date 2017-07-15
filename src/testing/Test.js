@@ -6,7 +6,6 @@ import {
   click as domClick,
   keyUp as domKeyUp
 } from 'ku4es-ui-testing';
-import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import moxios from 'moxios';
@@ -59,66 +58,57 @@ function renderComponent(component) {
   return query;
 }
 
-function findDom(selectorResult = []) {
-  try {
-    const isReactElement = React.isValidElement(selectorResult);
-    const component = isReactElement ? selectorResult : selectorResult.component;
-    const className = isReactElement ? selectorResult.props.className : selectorResult[0].attribs.class;
-    const tagName = isReactElement ? selectorResult.nodeName : selectorResult[0].tagName;
-
-    return Assert.exists(className)
-      ? ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithClass(component, className))
-      : ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithTag(component, tagName));
-  }
-  catch(e) {
-    throw new Error('Cannot find DOM node for selector. Confirm that your selector is correct and that there is a DOM node matching that selector in the rendered JSX.')
-  }
-}
-
-function change(selectorResult = [], event) {
+function change(selectorResult, event) {
   TestUtils.Simulate.change(findDom(selectorResult), event);
 }
 
-function click(selectorResult = [], event) {
+function click(selectorResult, event) {
   TestUtils.Simulate.click(findDom(selectorResult), event);
 }
 
-function submit(selectorResult = [], event) {
-  TestUtils.Simulate.submit(findDom(selectorResult), event);
-}
-
-function mouseMove(selectorResult = [], event) {
-  TestUtils.Simulate.mouseMove(findDom(selectorResult), event);
-}
-
-function keyDown(selectorResult = [], event) {
+function keyDown(selectorResult, event) {
   const { keyCode, which, code } = event;
   const _event = (Assert.isNumber(event)) ? { keyCode: event, which: event }
     : (Assert.exists(keyCode)) ? { keyCode, which: keyCode }
       : (Assert.exists(which)) ? { keyCode: which, which }
-        : (Assert.exists(code)) ? { keyCode: code, which: code }
-          : event;
+        : { keyCode: code, which: code };
 
   TestUtils.Simulate.keyDown(findDom(selectorResult), _event);
 }
 
-function write(selectorResult = [], value) {
+function submit(selectorResult, event) {
+  TestUtils.Simulate.submit(findDom(selectorResult), event);
+}
+
+function write(selectorResult, value) {
   change(selectorResult, new TestEvent({
     name: selectorResult.attr('name'),
     value: value
   }));
 }
 
-function assertWithResponse(response = { status: 200, response: { } }, assertions = () => { }) {
+function assertWithResponse(response, assertions) {
   moxios.wait(() => { moxios.requests.mostRecent().respondWith(response).then(assertions) });
 }
 
-function waitToAssert(timeout, assertions = () => { }) {
+function waitToAssert(timeout, assertions) {
   setTimeout(assertions, timeout);
 }
 
+function findDom(selectorResult) {
+  try {
+    const className = selectorResult[0].attribs.class;
+    return Assert.exists(className)
+      ? ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithClass(selectorResult.component, className))
+      : ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithTag(selectorResult.component, selectorResult[0].tagName));
+  }
+  catch(e) {
+    throw new Error('Cannot find node for selector. Must use valid class or tag name.')
+  }
+}
+
 export {
-//Virtual Server
+  //Virtual Server
   startServer,
   stopServer,
 
@@ -138,7 +128,6 @@ export {
   submit,
   keyDown,
   change,
-  mouseMove,
 
   //DOM event simulators
   domClick,

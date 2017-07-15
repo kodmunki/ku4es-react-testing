@@ -6,7 +6,6 @@
     "src/**/*.js"
   ],
   "exclude": [
-    "src/testing",
     "index.js"
   ],
   "reporter": [

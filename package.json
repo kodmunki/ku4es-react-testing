@@ -20,18 +20,20 @@
     "eslint": "eslint './src/**/*.js' './test/**/*.js'",
     "eslint-fix": "eslint --fix './src/**/*.js' './test/**/*.js'",
     "check": "npm run eslint && npm run test-cov",
+    "check-d": "npm run test-cov-d",
     "build": "shx mkdir -p dist && babel src -d dist --source-maps inline",
     "link": "sh ./link.sh"
   },
   "dependencies": {
-    "moxios": "0.*",
     "babel-polyfill": "6.*",
     "babel-runtime": "6.*",
+    "moxios": "0.*",
     "react": "15.*",
     "react-dom": "15.*",
     "react-router-dom": "4.*"
   },
   "devDependencies": {
+    "axios": "0.*",
     "babel-cli": "6.*",
     "babel-core": "6.*",
     "babel-plugin-istanbul": "4.*",
