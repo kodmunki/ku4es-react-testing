@@ -1,9 +1,6 @@
-import React from 'react';
 import assert from 'assert';
 import { describe, it } from 'mocha';
 import TestResponse from '../../src/testing/TestResponse';
-import ComponentStub from '../stubs/ComponentStub'
-import ViewStub from '../stubs/ViewStub'
 
 describe('TestResponse Test', () => {
 

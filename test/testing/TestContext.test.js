@@ -9,9 +9,16 @@ describe('TestContext Test', () => {
   beforeEach(() => loadDom());
   afterEach(() => unloadDom());
 
-  it('TestContext Test', () => {
-    const context = renderComponent(<TestContext/>);
+  it('should rerender', () => {
+    const $ = renderComponent(<TestContext/>);
+    //TODO: This is currently a bs coverage call. Need to implement a stub for a test
+    $.component.rerender();
+  });
+
+  it('should destroy', () => {
+    const $ = renderComponent(<TestContext/>);
     assert.ok(context);
+    $.component.destroy();
   });
 
 });

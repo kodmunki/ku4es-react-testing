@@ -1,6 +1,6 @@
 export default class TestEvent {
 
-  constructor(target = {}) {
+  constructor(target) {
     this.target = target;
   }
 

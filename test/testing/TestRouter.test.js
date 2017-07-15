@@ -25,19 +25,21 @@ describe('TestRouter Test', () => {
         <ViewStub />
       </TestRouter>
     );
-    $.component.setPath('http://test.domain.com/test/newpath')
-    assert.equal(window.location.href, '');
+    $.component.setPath('/test/newpath');
   });
 
   it('should destroy', () => {
-    const $ = renderComponent(
-      <TestRouter>
-        <ViewStub />
-      </TestRouter>
-    );
-    assert.ok($);
-    $.component.destroy();
-    assert.ok(!$);
+    assert.throws(() => {
+      const $ = renderComponent(
+        <TestRouter>
+          <ViewStub />
+        </TestRouter>
+      );
+      $.component.destroy();
+
+      /*Should fail : findDOMNode was called on an unmounted component*/
+      $('input');
+    }, 'Invariant Violation: findDOMNode was called on an unmounted component.');
   });
 
 });
