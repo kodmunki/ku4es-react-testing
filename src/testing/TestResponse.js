@@ -1,63 +1,31 @@
 export default class TestResponse {
 
-  constructor(successResponse) {
-    this._response = successResponse;
+  static success(payload) {
+    return { status: 200, payload }
   }
 
-  success() {
-    const response = this._response;
-    return {
-      status: 200,
-      response
-    }
+  static unauthorized(payload) {
+    return { status: 401, payload }
   }
 
-  unauthorized() {
-    return {
-      status: 401, response: {
-
-      }
-    }
+  static forbidden(payload) {
+    return { status: 403, payload }
   }
 
-  forbidden() {
-    return {
-      status: 403, response: {
-
-      }
-    }
+  static fileNotFound(payload) {
+    return { status: 404, payload }
   }
 
-  fileNotFound() {
-    return {
-      status: 404, response: {
-
-      }
-    }
+  static internalServerError(payload) {
+    return { status: 500, payload }
   }
 
-  internalServerError() {
-    return {
-      status: 500, response: {
-
-      }
-    }
+  static serviceUnavailable(payload) {
+    return { status: 503, payload }
   }
 
-  serviceUnavailable() {
-    return {
-      status: 503, response: {
-
-      }
-    }
-  }
-
-  gatewayTimeout() {
-    return {
-      status: 504, response: {
-
-      }
-    }
+  static gatewayTimeout(payload) {
+    return { status: 504, payload }
   }
 
 }

@@ -1,7 +1,7 @@
 export default class TestEvent {
 
-  constructor(targetProperties = {}) {
-    this.target = targetProperties;
+  constructor(target = {}) {
+    this.target = target;
   }
 
 }
