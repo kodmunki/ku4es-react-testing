@@ -12,8 +12,7 @@ import {
   change,
   domClick,
   domKeyUp,
-  assertWithResponse,
-  waitToAssert
+  assertWithResponse
 } from './testing/Test'
 import TestContext from './testing/TestContext'
 import TestDispatcher from './testing/TestDispatcher'
@@ -37,7 +36,6 @@ export {
   domClick,
   domKeyUp,
   assertWithResponse,
-  waitToAssert,
   TestContext,
   TestDispatcher,
   TestEvent,

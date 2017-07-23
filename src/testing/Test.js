@@ -91,10 +91,6 @@ function assertWithResponse(response, assertions) {
   moxios.wait(() => { moxios.requests.mostRecent().respondWith(response).then(assertions) });
 }
 
-function waitToAssert(timeout, assertions) {
-  setTimeout(assertions, timeout);
-}
-
 function findDom(selectorResult) {
   try {
     const className = selectorResult[0].attribs.class;
@@ -134,6 +130,5 @@ export {
   domKeyUp,
 
   //Assertions
-  assertWithResponse,
-  waitToAssert
+  assertWithResponse
 }

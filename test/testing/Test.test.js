@@ -14,8 +14,7 @@ import {
   submit,
   write,
   renderComponent,
-  assertWithResponse,
-  waitToAssert
+  assertWithResponse
 } from '../../src/testing/Test';
 import ComponentStub from '../stubs/ComponentStub'
 import ViewStub from '../stubs/ViewStub'
@@ -153,13 +152,6 @@ describe('Test Test', () => {
       done();
     });
     stopServer();
-  });
-
-  it('should wait to assert', (done) => {
-    waitToAssert(100, () => {
-      assert.ok(true);
-      done();
-    })
   });
 
 });

@@ -34,21 +34,21 @@ describe('TestRouter Test', () => {
 
     $.component.setPath(one);
     assert.equal($('input').val(), 'one')
-
+    $.component.destroy();
   });
 
   it('should destroy', () => {
-    assert.throws(() => {
-      const $ = renderComponent(
-        <TestRouter>
-          <ViewStub />
-        </TestRouter>
-      );
-      $.component.destroy();
+    const $ = renderComponent(
+      <TestRouter>
+        <Switch>
+          <Route path="/a" render={() => <ViewStub value="one"/>} />
+          <Route path="/b" render={() => <ViewStub value="two"/>} />
+        </Switch>
+      </TestRouter>
+    );
 
-      /*Should fail : findDOMNode was called on an unmounted component*/
-      $('input');
-    }, 'Invariant Violation: findDOMNode was called on an unmounted component.');
+    $.component.setPath('/a');
+    $.component.destroy();
   });
 
 });
