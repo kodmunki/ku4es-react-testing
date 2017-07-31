@@ -154,4 +154,24 @@ describe('Test Test', () => {
     stopServer();
   });
 
+  it('should catch failed with response', () => {
+    startServer();
+    axios.get('test.domain.com', { actual: 'data' })
+    assertWithResponse({ status: 200, response: { test: 'data' } }, ({ data }) => {
+      assert.equal(data.test, '');
+    });
+    stopServer();
+  });
+
+  it('should catch failed with response custom', (done) => {
+    startServer();
+    axios.get('test.domain.com', { actual: 'data' })
+    assertWithResponse({ status: 200, response: { test: 'data' } },
+      ({ data }) => { assert.equal(data.test, ''); },
+      (e) => {
+        assert.ok(e);
+        done();
+      });
+    stopServer();
+  });
 });

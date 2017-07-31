@@ -87,13 +87,14 @@ function write(selectorResult, value) {
   }));
 }
 
-function assertWithResponse(response, assertions) {
-  moxios.wait(() => { moxios.requests.mostRecent().respondWith(response).then(assertions) });
+// eslint-disable-next-line no-console
+function assertWithResponse(response, assertions, onfail = (e) => { console.error(e); }) {
+  moxios.wait(() => { moxios.requests.mostRecent().respondWith(response).then(assertions).catch(onfail) });
 }
 
 function findDom(selectorResult) {
   try {
-    const className = selectorResult[0].attribs.class;
+    const className = selectorResult.attr('class');
     return Assert.exists(className)
       ? ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithClass(selectorResult.component, className))
       : ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithTag(selectorResult.component, selectorResult[0].tagName));
