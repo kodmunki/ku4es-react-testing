@@ -151,7 +151,7 @@ describe('Test Test', () => {
       .then((response) => {
         assert.equal(response.status, 200);
         assert.deepEqual(response.data, { test: 'data' });
-        done()
+        done();
       });
     sendResponse({ status: 200, response: { test: 'data' } })
     stopServer();
