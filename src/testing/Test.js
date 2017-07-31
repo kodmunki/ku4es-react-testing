@@ -87,6 +87,10 @@ function write(selectorResult, value) {
   }));
 }
 
+function sendResponse(response) {
+  moxios.wait(() => { moxios.requests.mostRecent().respondWith(response) });
+}
+
 // eslint-disable-next-line no-console
 function assertWithResponse(response, assertions, onfail = (e) => { console.error(e); }) {
   moxios.wait(() => { moxios.requests.mostRecent().respondWith(response).then(assertions).catch(onfail) });
@@ -129,6 +133,9 @@ export {
   //DOM event simulators
   domClick,
   domKeyUp,
+
+  //Services
+  sendResponse,
 
   //Assertions
   assertWithResponse

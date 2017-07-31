@@ -14,6 +14,7 @@ import {
   submit,
   write,
   renderComponent,
+  sendResponse,
   assertWithResponse
 } from '../../src/testing/Test';
 import ComponentStub from '../stubs/ComponentStub'
@@ -142,6 +143,18 @@ describe('Test Test', () => {
     assert.equal($('input').val(), 'write');
     $.component.destroy();
     unloadDom();
+  });
+
+  it('should send response', (done) => {
+    startServer();
+    axios.get('test.domain.com', { actual: 'data' })
+      .then((response) => {
+        assert.equal(response.status, 200);
+        assert.deepEqual(response.data, { test: 'data' });
+        done()
+      });
+    sendResponse({ status: 200, response: { test: 'data' } })
+    stopServer();
   });
 
   it('should assert with response', (done) => {
