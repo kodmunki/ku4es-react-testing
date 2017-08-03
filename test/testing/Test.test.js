@@ -14,8 +14,7 @@ import {
   submit,
   write,
   renderComponent,
-  sendResponse,
-  assertWithResponse
+  sendResponse
 } from '../../src/testing/Test';
 import ComponentStub from '../stubs/ComponentStub'
 import ViewStub from '../stubs/ViewStub'
@@ -154,37 +153,9 @@ describe('Test Test', () => {
         done();
       });
     sendResponse({ status: 200, response: { test: 'data' } })
-    stopServer();
-  });
-
-  it('should assert with response', (done) => {
-    startServer();
-    axios.get('test.domain.com', { actual: 'data' })
-    assertWithResponse({ status: 200, response: { test: 'data' } }, ({ data }) => {
-      assert.equal(data.test, 'data');
-      done();
-    });
-    stopServer();
-  });
-
-  it('should catch failed with response', () => {
-    startServer();
-    axios.get('test.domain.com', { actual: 'data' })
-    assertWithResponse({ status: 200, response: { test: 'data' } }, ({ data }) => {
-      assert.equal(data.test, '');
-    });
-    stopServer();
-  });
-
-  it('should catch failed with response custom', (done) => {
-    startServer();
-    axios.get('test.domain.com', { actual: 'data' })
-    assertWithResponse({ status: 200, response: { test: 'data' } },
-      ({ data }) => { assert.equal(data.test, ''); },
-      (e) => {
-        assert.ok(e);
-        done();
-      });
-    stopServer();
+      .then((response) => {
+        assert.deepEqual(response.data, { test: 'data' })
+        stopServer();
+      })
   });
 });

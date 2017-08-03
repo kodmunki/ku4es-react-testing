@@ -88,12 +88,13 @@ function write(selectorResult, value) {
 }
 
 function sendResponse(response) {
-  moxios.wait(() => { moxios.requests.mostRecent().respondWith(response) });
-}
-
-// eslint-disable-next-line no-console
-function assertWithResponse(response, assertions, onfail = (e) => { console.error(e); }) {
-  moxios.wait(() => { moxios.requests.mostRecent().respondWith(response).then(assertions).catch(onfail) });
+  return new Promise((resolve, reject) => {
+    moxios.wait(() => {
+      moxios.requests.mostRecent().respondWith(response)
+        .then(resolve)
+        .catch(reject)
+    });
+  })
 }
 
 function findDom(selectorResult) {
@@ -134,9 +135,6 @@ export {
   domClick,
   domKeyUp,
 
-  //Services
-  sendResponse,
-
-  //Assertions
-  assertWithResponse
+  //Service Response
+  sendResponse
 }
