@@ -13,13 +13,13 @@ import {
   domClick,
   domKeyUp,
   sendResponse
-} from './testing/Test'
-import TestContext from './testing/TestContext'
-import TestDispatcher from './testing/TestDispatcher'
-import TestEvent from './testing/TestEvent'
-import TestNotifier from './testing/TestNotifier'
-import TestResponse from './testing/TestResponse'
-import TestRouter from './testing/TestRouter'
+} from './testing/Test';
+import TestContext from './testing/TestContext';
+import TestDispatcher from './testing/TestDispatcher';
+import TestEvent from './testing/TestEvent';
+import TestNotifier from './testing/TestNotifier';
+import TestResponse from './testing/TestResponse';
+import TestRouter from './testing/TestRouter';
 
 export {
   startServer,

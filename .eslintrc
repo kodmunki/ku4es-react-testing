@@ -101,7 +101,7 @@
     "react/self-closing-comp": 2,
     "react/sort-comp": 0,
     "require-render-return": 0,
-    "semi": 0,
+    "semi": [2, "always"],
     "semi-spacing": 2,
     "sort-prop-types": 0
   },

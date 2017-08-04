@@ -22,10 +22,10 @@ export default class TestContext extends React.Component {
       <div>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
 TestContext.propTypes = {
   children: PropTypes.node
-}
+};

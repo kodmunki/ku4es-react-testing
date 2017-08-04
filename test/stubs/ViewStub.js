@@ -6,7 +6,7 @@ export default class ViewStub extends Component {
   constructor(props) {
     super(props);
     const { value = '', onClick = () => { }, onKeyDown = () => { }, onSubmit = () => { } } = this.props;
-    this.state = { value, onClick, onKeyDown, onSubmit }
+    this.state = { value, onClick, onKeyDown, onSubmit };
   }
 
   _onChange(e) {
@@ -25,7 +25,7 @@ export default class ViewStub extends Component {
     return(
       <div>
         <form onSubmit={onSubmit}>
-          <input type="test" className="input" onChange={(e) => { this._onChange(e) }} onKeyDown={onKeyDown} value={value} />
+          <input type="test" className="input" onChange={(e) => { this._onChange(e); }} onKeyDown={onKeyDown} value={value} />
           <button className="button" onClick={onClick}>press</button>
         </form>
       </div>

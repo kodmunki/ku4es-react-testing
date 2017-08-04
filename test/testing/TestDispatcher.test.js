@@ -6,7 +6,7 @@ describe('TestDispatcher Test', () => {
 
   it('should register and unregister', () => {
     let value = false;
-    const observer = () => { value = !value; }
+    const observer = () => { value = !value; };
     const dispatcher = new TestDispatcher();
     assert.ok(!value);
     dispatcher.dispatch();

@@ -4,7 +4,7 @@ import { describe, it } from 'mocha';
 import { loadDom, unloadDom, renderComponent } from '../../src/testing/Test';
 import { Route, Switch } from 'react-router-dom';
 import TestRouter from '../../src/testing/TestRouter';
-import ViewStub from '../stubs/ViewStub'
+import ViewStub from '../stubs/ViewStub';
 
 describe('TestRouter Test', () => {
 
@@ -33,7 +33,7 @@ describe('TestRouter Test', () => {
     );
 
     $.component.setPath(one);
-    assert.equal($('input').val(), 'one')
+    assert.equal($('input').val(), 'one');
     $.component.destroy();
   });
 

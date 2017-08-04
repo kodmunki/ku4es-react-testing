@@ -92,9 +92,9 @@ function sendResponse(response) {
     moxios.wait(() => {
       moxios.requests.mostRecent().respondWith(response)
         .then(resolve)
-        .catch(reject)
+        .catch(reject);
     });
-  })
+  });
 }
 
 function findDom(selectorResult) {
@@ -105,7 +105,7 @@ function findDom(selectorResult) {
       : ReactDOM.findDOMNode(TestUtils.findRenderedDOMComponentWithTag(selectorResult.component, selectorResult[0].tagName));
   }
   catch(e) {
-    throw new Error('Cannot find node for selector. Must use valid class or tag name.')
+    throw new Error('Cannot find node for selector. Must use valid class or tag name.');
   }
 }
 
@@ -137,4 +137,4 @@ export {
 
   //Service Response
   sendResponse
-}
+};

@@ -16,8 +16,8 @@ import {
   renderComponent,
   sendResponse
 } from '../../src/testing/Test';
-import ComponentStub from '../stubs/ComponentStub'
-import ViewStub from '../stubs/ViewStub'
+import ComponentStub from '../stubs/ComponentStub';
+import ViewStub from '../stubs/ViewStub';
 
 describe('Test Test', () => {
 
@@ -44,7 +44,7 @@ describe('Test Test', () => {
   it('should change', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onChange={() => { value = 'changed' }}/>);
+    const $ = renderComponent(<ViewStub onChange={() => { value = 'changed'; }}/>);
     change($('input'));
     assert.equal(value, 'changed');
     $.component.destroy();
@@ -54,7 +54,7 @@ describe('Test Test', () => {
   it('should click', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onClick={() => { value = 'click' }}/>);
+    const $ = renderComponent(<ViewStub onClick={() => { value = 'click'; }}/>);
     click($('button'));
     assert.equal(value, 'click');
     $.component.destroy();
@@ -64,7 +64,7 @@ describe('Test Test', () => {
   it('should keyDown with number', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown' }}/>);
+    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown'; }}/>);
     keyDown($('input'), 27);
     assert.equal(value, 'keyDown');
     $.component.destroy();
@@ -74,7 +74,7 @@ describe('Test Test', () => {
   it('should keyDown with keyCode', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown' }}/>);
+    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown'; }}/>);
     keyDown($('input'), { keyCode: 27 });
     assert.equal(value, 'keyDown');
     $.component.destroy();
@@ -84,7 +84,7 @@ describe('Test Test', () => {
   it('should keyDown with which', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown' }}/>);
+    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown'; }}/>);
     keyDown($('input'), { which: 27 });
     assert.equal(value, 'keyDown');
     $.component.destroy();
@@ -94,7 +94,7 @@ describe('Test Test', () => {
   it('should keyDown with code', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown' }}/>);
+    const $ = renderComponent(<ViewStub onKeyDown={() => { value = 'keyDown'; }}/>);
     keyDown($('input'), { code: 27 });
     assert.equal(value, 'keyDown');
     $.component.destroy();
@@ -104,7 +104,7 @@ describe('Test Test', () => {
   it('should submit', () => {
     loadDom();
     let value;
-    const $ = renderComponent(<ViewStub onSubmit={() => { value = 'submit' }}/>);
+    const $ = renderComponent(<ViewStub onSubmit={() => { value = 'submit'; }}/>);
     submit($('form'));
     assert.equal(value, 'submit');
     $.component.destroy();
@@ -114,7 +114,7 @@ describe('Test Test', () => {
   it('should change component', () => {
     loadDom();
     let value;
-    const element = <ViewStub className="viewStub" onChange={() => { value = 'change' }}/>;
+    const element = <ViewStub className="viewStub" onChange={() => { value = 'change'; }}/>;
     const $ = renderComponent(element);
     change($('input'));
     assert.equal(value, 'change');
@@ -129,7 +129,7 @@ describe('Test Test', () => {
       const $ = renderComponent(element);
       change();
       $.component.destroy();
-    })
+    });
     unloadDom();
   });
 
@@ -154,8 +154,8 @@ describe('Test Test', () => {
       });
     sendResponse({ status: 200, response: { test: 'data' } })
       .then((response) => {
-        assert.deepEqual(response.data, { test: 'data' })
+        assert.deepEqual(response.data, { test: 'data' });
         stopServer();
-      })
+      });
   });
 });
