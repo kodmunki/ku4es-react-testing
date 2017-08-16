@@ -25,8 +25,8 @@
     "link": "sh ./link.sh"
   },
   "dependencies": {
-    "babel-polyfill": "6.*",
-    "babel-runtime": "^6.25.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
     "moxios": "0.*",
     "react": "15.*",
     "react-dom": "15.*",
@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "axios": "0.*",
-    "babel-cli": "6.*",
-    "babel-core": "6.*",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-istanbul": "4.*",
     "babel-plugin-transform-runtime": "6.*",
