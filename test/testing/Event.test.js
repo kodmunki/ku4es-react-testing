@@ -1,12 +1,12 @@
 import assert from 'assert';
 import { describe, it } from 'mocha';
-import TestEvent from '../../src/testing/TestEvent';
+import Event from '../../src/testing/Event';
 
-describe('TestEvent Test', () => {
+describe('Event Test', () => {
 
   it('new', () => {
     const target = { target: 'target' };
-    const event = new TestEvent(target);
+    const event = new Event(target);
     assert.deepEqual(event.target, target);
   });
 

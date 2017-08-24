@@ -1,22 +1,22 @@
 import React from 'react';
 import assert from 'assert';
 import { describe, it } from 'mocha';
-import { loadDom, unloadDom, renderComponent } from '../../src/testing/Test';
-import TestContext from '../../src/testing/TestContext';
+import { loadDom, unloadDom, renderComponent } from '../../src/testing/index';
+import Context from '../../src/testing/Context';
 
-describe('TestContext Test', () => {
+describe('Context Test', () => {
 
   beforeEach(() => loadDom());
   afterEach(() => unloadDom());
 
   it('should rerender', () => {
-    const $ = renderComponent(<TestContext/>);
+    const $ = renderComponent(<Context/>);
     //TODO: This is currently a bs coverage call. Need to implement a stub for a test
     $.component.rerender();
   });
 
   it('should destroy', () => {
-    const $ = renderComponent(<TestContext/>);
+    const $ = renderComponent(<Context/>);
     assert.ok(context);
     $.component.destroy();
   });

@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
  * application. This stub router will bootstrap all necessary API and implementation
  * to test the render of a Route and other Route components, e.g. Link.
  */
-export default class TestRouter extends MemoryRouter {
+export default class Router extends MemoryRouter {
 
   constructor(props, context) {
     super(props, context);

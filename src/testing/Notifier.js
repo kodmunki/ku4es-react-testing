@@ -1,4 +1,4 @@
-export default class TestNotifier {
+export default class Notifier {
   constructor() {
     this._subscribers = [];
   }

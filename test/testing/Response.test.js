@@ -1,12 +1,12 @@
 import assert from 'assert';
 import { describe, it } from 'mocha';
-import TestResponse from '../../src/testing/TestResponse';
+import Response from '../../src/testing/Response';
 
-describe('TestResponse Test', () => {
+describe('Response Test', () => {
 
   it('should be success', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.success(payload);
+    const response = Response.success(payload);
 
     assert.equal(response.status, 200);
     assert.deepEqual(response.payload, payload);
@@ -14,7 +14,7 @@ describe('TestResponse Test', () => {
 
   it('should be unauthorized', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.unauthorized(payload);
+    const response = Response.unauthorized(payload);
 
     assert.equal(response.status, 401);
     assert.deepEqual(response.payload, payload);
@@ -22,7 +22,7 @@ describe('TestResponse Test', () => {
 
   it('should be forbidden', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.forbidden(payload);
+    const response = Response.forbidden(payload);
 
     assert.equal(response.status, 403);
     assert.deepEqual(response.payload, payload);
@@ -30,7 +30,7 @@ describe('TestResponse Test', () => {
 
   it('should be fileNotFound', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.fileNotFound(payload);
+    const response = Response.fileNotFound(payload);
 
     assert.equal(response.status, 404);
     assert.deepEqual(response.payload, payload);
@@ -38,7 +38,7 @@ describe('TestResponse Test', () => {
 
   it('should be internalServerError', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.internalServerError(payload);
+    const response = Response.internalServerError(payload);
 
     assert.equal(response.status, 500);
     assert.deepEqual(response.payload, payload);
@@ -46,7 +46,7 @@ describe('TestResponse Test', () => {
 
   it('should be serviceUnavailable', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.serviceUnavailable(payload);
+    const response = Response.serviceUnavailable(payload);
 
     assert.equal(response.status, 503);
     assert.deepEqual(response.payload, payload);
@@ -54,7 +54,7 @@ describe('TestResponse Test', () => {
 
   it('should be gatewayTimeout', () => {
     const payload = { value: 'value' };
-    const response = TestResponse.gatewayTimeout(payload);
+    const response = Response.gatewayTimeout(payload);
 
     assert.equal(response.status, 504);
     assert.deepEqual(response.payload, payload);

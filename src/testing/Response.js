@@ -1,4 +1,4 @@
-export default class TestResponse {
+export default class Response {
 
   static success(payload) {
     return { status: 200, payload };

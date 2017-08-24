@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import moxios from 'moxios';
 import cheerio from 'cheerio';
-import TestEvent from './TestEvent';
+import TestEvent from './Event';
 
 function startServer() {
   moxios.install();
@@ -110,31 +110,18 @@ function findDom(selectorResult) {
 }
 
 export {
-  //Virtual Server
   startServer,
   stopServer,
-
-  //Virtual DOM
   loadDom,
   loadSafeDom,
   unloadDom,
-
-  //React Rendering
   renderComponent,
-
-  //React Forms
   write,
-
-  //React event simulators
   click,
   submit,
   keyDown,
   change,
-
-  //DOM event simulators
   domClick,
   domKeyUp,
-
-  //Service Response
   sendResponse
 };

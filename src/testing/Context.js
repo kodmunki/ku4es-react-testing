@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-export default class TestContext extends React.Component {
+export default class Context extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,6 +26,6 @@ export default class TestContext extends React.Component {
   }
 }
 
-TestContext.propTypes = {
+Context.propTypes = {
   children: PropTypes.node
 };

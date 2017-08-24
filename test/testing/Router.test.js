@@ -1,21 +1,21 @@
 import React from 'react';
 import assert from 'assert';
 import { describe, it } from 'mocha';
-import { loadDom, unloadDom, renderComponent } from '../../src/testing/Test';
+import { loadDom, unloadDom, renderComponent } from '../../src/testing/index';
 import { Route, Switch } from 'react-router-dom';
-import TestRouter from '../../src/testing/TestRouter';
-import ViewStub from '../stubs/ViewStub';
+import Router from '../../src/testing/Router';
+import ViewStub from '../stubs/ComponentStub';
 
-describe('TestRouter Test', () => {
+describe('Router Test', () => {
 
   beforeEach(() => loadDom());
   afterEach(() => unloadDom());
 
   it('new', () => {
     const $ = renderComponent(
-      <TestRouter>
+      <Router history="">
         <ViewStub />
-      </TestRouter>
+      </Router>
     );
     assert.ok($.component);
   });
@@ -24,12 +24,12 @@ describe('TestRouter Test', () => {
     const one = '/test/path/one';
     const two = '/test/path/two';
     const $ = renderComponent(
-      <TestRouter>
+      <Router history="">
         <Switch>
           <Route path={one} render={() => <ViewStub value="one"/>} />
           <Route path={two} render={() => <ViewStub value="two"/>} />
         </Switch>
-      </TestRouter>
+      </Router>
     );
 
     $.component.setPath(one);
@@ -39,12 +39,12 @@ describe('TestRouter Test', () => {
 
   it('should destroy', () => {
     const $ = renderComponent(
-      <TestRouter>
+      <Router history="">
         <Switch>
           <Route path="/a" render={() => <ViewStub value="one"/>} />
           <Route path="/b" render={() => <ViewStub value="two"/>} />
         </Switch>
-      </TestRouter>
+      </Router>
     );
 
     $.component.setPath('/a');

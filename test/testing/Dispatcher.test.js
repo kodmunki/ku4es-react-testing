@@ -1,13 +1,13 @@
 import assert from 'assert';
 import { describe, it } from 'mocha';
-import TestDispatcher from '../../src/testing/TestDispatcher';
+import Dispatcher from '../../src/testing/Dispatcher';
 
-describe('TestDispatcher Test', () => {
+describe('Dispatcher Test', () => {
 
   it('should register and unregister', () => {
     let value = false;
     const observer = () => { value = !value; };
-    const dispatcher = new TestDispatcher();
+    const dispatcher = new Dispatcher();
     assert.ok(!value);
     dispatcher.dispatch();
     assert.ok(!value);

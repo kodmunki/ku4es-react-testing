@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-export default class ViewStub extends Component {
+export default class ComponentStub extends Component {
 
   constructor(props) {
     super(props);
-    const { value = '', onKeyDown = () => { } } = this.props;
-    this.state = { value, onKeyDown };
+    const { value = '', onClick = () => { }, onKeyDown = () => { }, onSubmit = () => { } } = this.props;
+    this.state = { value, onClick, onKeyDown, onSubmit };
   }
 
   _onChange(e) {
@@ -21,9 +21,14 @@ export default class ViewStub extends Component {
   }
 
   render() {
-    const { value, onKeyDown } = this.state;
+    const { value, onClick, onKeyDown, onSubmit } = this.state;
     return(
-      <input name="component" className="component" type="test"  onChange={(e) => { this._onChange(e); }} onKeyDown={onKeyDown} value={value} />
+      <div>
+        <form onSubmit={onSubmit}>
+          <input type="test" className="input" onChange={(e) => { this._onChange(e); }} onKeyDown={onKeyDown} value={value} />
+          <button className="button" onClick={onClick}>press</button>
+        </form>
+      </div>
     );
   }
 
