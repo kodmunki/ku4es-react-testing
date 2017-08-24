@@ -14,12 +14,12 @@ import {
   domKeyUp,
   sendResponse
 } from './testing';
-import TestContext from './testing/Context';
-import TestDispatcher from './testing/Dispatcher';
-import TestEvent from './testing/Event';
-import TestNotifier from './testing/Notifier';
-import TestResponse from './testing/Response';
-import TestRouter from './testing/Router';
+import Context from './testing/Context';
+import Dispatcher from './testing/Dispatcher';
+import Event from './testing/Event';
+import Notifier from './testing/Notifier';
+import Response from './testing/Response';
+import Router from './testing/Router';
 
 export {
   startServer,
@@ -36,10 +36,10 @@ export {
   domClick,
   domKeyUp,
   sendResponse,
-  TestContext,
-  TestDispatcher,
-  TestEvent,
-  TestNotifier,
-  TestResponse,
-  TestRouter
+  Context,
+  Dispatcher,
+  Event,
+  Notifier,
+  Response,
+  Router
 };
