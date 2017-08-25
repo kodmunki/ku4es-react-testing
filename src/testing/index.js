@@ -90,7 +90,11 @@ function write(selectorResult, value) {
 function sendResponse(response) {
   return new Promise((resolve, reject) => {
     moxios.wait(() => {
-      moxios.requests.mostRecent().respondWith(response)
+      const tracker = moxios.requests;
+      const request = tracker.at(0);
+      const { method, url } = request.config;
+      tracker.remove(method, url);
+      request.respondWith(response)
         .then(resolve)
         .catch(reject);
     });
