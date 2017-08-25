@@ -92,8 +92,7 @@ function sendResponse(response) {
     moxios.wait(() => {
       const tracker = moxios.requests;
       const request = tracker.at(0);
-      const { method, url } = request.config;
-      tracker.remove(method, url);
+      tracker.__items.shift();
       request.respondWith(response)
         .then(resolve)
         .catch(reject);
