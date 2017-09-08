@@ -87,12 +87,12 @@ function write(selectorResult, value) {
   }));
 }
 
-function sendResponse(response) {
+function sendResponse(response, index = 0) {
   return new Promise((resolve, reject) => {
     moxios.wait(() => {
       const tracker = moxios.requests;
-      const request = tracker.at(0);
-      tracker.__items.shift();
+      const request = tracker.at(index);
+      tracker.__items.splice(index, 1);
       request.respondWith(response)
         .then(resolve)
         .catch(reject);
