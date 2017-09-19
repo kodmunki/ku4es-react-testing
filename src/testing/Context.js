@@ -10,6 +10,24 @@ export default class Context extends React.Component {
   }
 
   /**
+   * Dependent classes can override this virtual `$render` method
+   * to create situations where they can do such things as
+   * updateProps on the fly to gain test coverage for such a scenario.
+   * To gain such coverage one can override this method and return
+   * the target component passing to it `this.state`. For example:
+   * `return(<MyComponent {...this.state}/>)`
+   *
+   * @returns {XML}
+   */
+  $render() {
+    return(
+      <div>
+        {this.props.children}
+      </div>
+    );
+  }
+
+  /**
    * This method exposes a mechanism for dependent tests
    * to obtain test coverage for those cases where coverage
    * is needed for the case where a component's props are
@@ -33,13 +51,7 @@ export default class Context extends React.Component {
     ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this).parentNode);
   }
 
-  render() {
-    return(
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
+  render() { return this.$render(); }
 }
 
 Context.propTypes = {
