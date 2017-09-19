@@ -9,6 +9,22 @@ export default class Context extends React.Component {
     this.state = props;
   }
 
+  /**
+   * This method exposes a mechanism for dependent tests
+   * to obtain test coverage for those cases where coverage
+   * is needed for the case where a component's props are
+   * updated during its lifecycle.
+   *
+   * @param value - Object literal of new props
+   */
+  updateProps(value) {
+    this.setState(value);
+  }
+
+  /**
+   * This method exposes a means to force a rerendering
+   * of a this context.
+   */
   rerender() {
     this.forceUpdate();
   }

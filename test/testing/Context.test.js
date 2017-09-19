@@ -9,6 +9,14 @@ describe('Context Test', () => {
   beforeEach(() => loadDom());
   afterEach(() => unloadDom());
 
+  it('should update props', () => {
+    const $ = renderComponent(<Context/>);
+    $.component.state = null;
+    $.component.updateProps({'new': 'props'});
+    assert.deepEqual($.component.state, {'new': 'props'});
+    $.component.destroy();
+  });
+
   it('should rerender', () => {
     const $ = renderComponent(<Context/>);
     //TODO: This is currently a bs coverage call. Need to implement a stub for a test
