@@ -12,10 +12,13 @@ export default class Context extends React.Component {
   /**
    * Dependent classes can override this virtual `$render` method
    * to create situations where they can do such things as
-   * updateProps on the fly to gain test coverage for such a scenario.
+   * updateChildProps on the fly to gain test coverage for such a scenario.
    * To gain such coverage one can override this method and return
    * the target component passing to it `this.state`. For example:
-   * `return(<MyComponent {...this.state}/>)`
+   * ```
+   * $render() { return <MyComponent { ...this.state }/> }
+   *
+   * ```
    *
    * @returns {XML}
    */
@@ -28,20 +31,25 @@ export default class Context extends React.Component {
   }
 
   /**
-   * This method exposes a mechanism for dependent tests
-   * to obtain test coverage for those cases where coverage
-   * is needed for the case where a component's props are
-   * updated during its lifecycle.
+   * This method exposes a entry point for a pattern that enables
+   * dependent tests to obtain test coverage for those cases where
+   * system components require testing of prop value updates during
+   * the course of their lifecycle. To leverage this pattern
+   * successfully the developer will need to extend this `Context`
+   * class and override the `$render` method such that it returns
+   * their target, prop-updating component after passing
+   * `this.state` into the target component. For example:
+   * `return(<MyComponent {...this.state}/>)`
    *
    * @param value - Object literal of new props
    */
-  updateProps(value) {
+  updateChildProps(value) {
     this.setState(value);
   }
 
   /**
-   * This method exposes a means to force a rerendering
-   * of a this context.
+   * This method exposes an expressive means to perform a rerendering
+   * of a this Context.
    */
   rerender() {
     this.forceUpdate();

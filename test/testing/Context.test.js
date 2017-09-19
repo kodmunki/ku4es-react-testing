@@ -12,7 +12,7 @@ describe('Context Test', () => {
   it('should update props', () => {
     const $ = renderComponent(<Context/>);
     $.component.state = null;
-    $.component.updateProps({'new': 'props'});
+    $.component.updateChildProps({'new': 'props'});
     assert.deepEqual($.component.state, {'new': 'props'});
     $.component.destroy();
   });
