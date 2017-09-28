@@ -5,6 +5,7 @@ import { loadDom, unloadDom, renderComponent } from '../../src/testing/index';
 import { Route, Switch } from 'react-router-dom';
 import Router from '../../src/testing/Router';
 import ViewStub from '../stubs/ComponentStub';
+import ErrorComponent from '../../src/testing/ErrorComponent';
 
 describe('Router Test', () => {
 
@@ -18,6 +19,16 @@ describe('Router Test', () => {
       </Router>
     );
     assert.ok($.component);
+  });
+
+  it('throws', () => {
+    assert.throws(() => {
+      renderComponent(
+        <Router history="">
+          <ErrorComponent />
+        </Router>
+      );
+    });
   });
 
   it('should setPath', () => {

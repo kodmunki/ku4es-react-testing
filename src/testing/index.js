@@ -54,8 +54,7 @@ function renderComponent(component) {
     document.body.appendChild(root);
     yield ReactDOM.render(component, root, function(){ _component = this; });
     const query = (selector) => {
-      const domNode = ReactDOM.findDOMNode(_component);
-      const $ = cheerio.load(domNode.outerHTML);
+      const $ = cheerio.load(document.documentElement.outerHTML);
       const result = $(selector);
       result.component = _component;
       return result;

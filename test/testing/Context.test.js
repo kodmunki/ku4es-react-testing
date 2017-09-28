@@ -3,12 +3,21 @@ import assert from 'assert';
 import { describe, it } from 'mocha';
 import { loadDom, unloadDom, renderComponent } from '../../src/testing/index';
 import Context from '../../src/testing/Context';
+import ErrorComponent from '../../src/testing/ErrorComponent';
 
 describe('Context Test', () => {
 
   beforeEach(() => loadDom());
   afterEach(() => unloadDom());
-
+  it('throws', () => {
+    assert.throws(() => {
+      renderComponent(
+        <Context>
+          <ErrorComponent />
+        </Context>
+      );
+    });
+  });
   it('should update props', () => {
     const $ = renderComponent(<Context/>);
     $.component.state = null;

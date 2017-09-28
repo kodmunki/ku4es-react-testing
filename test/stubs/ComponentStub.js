@@ -20,6 +20,11 @@ export default class ComponentStub extends Component {
     ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this).parentNode);
   }
 
+  componentDidCatch(error, info) {
+    console.error(error, info); // eslint-disable-line no-console
+    throw error;
+  }
+
   render() {
     const { value, onClick, onKeyDown, onSubmit } = this.state;
     return(

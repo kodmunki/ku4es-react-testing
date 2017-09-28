@@ -56,7 +56,13 @@ export default class Context extends React.Component {
   }
 
   destroy() {
-    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this).parentNode);
+    const node = ReactDOM.findDOMNode(this);
+    node && ReactDOM.unmountComponentAtNode(node.parentNode);
+  }
+
+  componentDidCatch(error, info) {
+    console.error(error, info); // eslint-disable-line no-console
+    throw error;
   }
 
   render() { return this.$render(); }

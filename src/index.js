@@ -15,6 +15,7 @@ import {
   sendResponse
 } from './testing';
 import Context from './testing/Context';
+import ErrorComponent from './testing/ErrorComponent';
 import Dispatcher from './testing/Dispatcher';
 import Event from './testing/Event';
 import Notifier from './testing/Notifier';
@@ -38,6 +39,7 @@ export {
   sendResponse,
   Context,
   Dispatcher,
+  ErrorComponent,
   Event,
   Notifier,
   Response,
