@@ -45,17 +45,27 @@ function unloadDom() {
  *  with a pointer to the component for component.destroy() call.
  */
 function renderComponent(component) {
-  const _component = TestUtils.renderIntoDocument(component);
-  const query = (selector) => {
-    const domNode = ReactDOM.findDOMNode(_component);
-    const $ = cheerio.load(domNode.outerHTML);
-    const result = $(selector);
-    result.component = _component;
-    return result;
-  };
-  query.dom = ReactDOM.findDOMNode(_component);
-  query.component = _component;
-  return query;
+  const result = (function *(){
+    let _component;
+    const root = document.createElement('div');
+    const data = document.createAttribute('data-root');
+    data.value = 'ku4es-react-testing';
+    root.setAttributeNode(data);
+    document.body.appendChild(root);
+    yield ReactDOM.render(component, root, function(){ _component = this; });
+    const query = (selector) => {
+      const domNode = ReactDOM.findDOMNode(_component);
+      const $ = cheerio.load(domNode.outerHTML);
+      const result = $(selector);
+      result.component = _component;
+      return result;
+    };
+    query.dom = ReactDOM.findDOMNode(_component);
+    query.component = _component;
+    return query;
+  })();
+  result.next();
+  return result.next().value;
 }
 
 function change(selectorResult, event) {
