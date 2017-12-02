@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "ku4es-react-testing",
   "version": "1.0.0",
   "description": "kodmunki™ Unitilities for ECMAScript React Testing",
