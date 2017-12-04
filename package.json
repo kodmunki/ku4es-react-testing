@@ -1,6 +1,6 @@
 {
   "name": "@kodmunki/ku4es-react-testing",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "kodmunki™ Unitilities for ECMAScript React Testing",
   "repository": {
     "type": "git",
@@ -58,9 +58,9 @@
     "teaspoon": "6.x"
   },
   "files": [
-    "./dist"
+    "dist"
   ],
-  "main": "./dist",
+  "main": "dist",
   "false": {},
   "bugs": {
     "url": "https://github.com/kodmunki/ku4es-react-testing/issues"

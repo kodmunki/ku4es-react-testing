@@ -1,11 +1,11 @@
-import { Assert } from 'ku4es-kernel';
+import { Assert } from '@kodmunki/ku4es-kernel';
 import {
   loadDom as loadTestDom,
   loadSafeDom as loadSafeTestDom,
   unloadDom as unloadTestDom,
   click as domClick,
   keyUp as domKeyUp
-} from 'ku4es-ui-testing';
+} from '@kodmunki/ku4es-ui-testing';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import moxios from 'moxios';
