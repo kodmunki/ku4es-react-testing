@@ -1,11 +1,10 @@
 {
-  "private": true,
-  "name": "ku4es-react-testing",
-  "version": "1.0.0",
+  "name": "@kodmunki/ku4es-react-testing",
+  "version": "1.0.1",
   "description": "kodmunki™ Unitilities for ECMAScript React Testing",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kodmunki/ku4es-react-testing"
+    "url": "git+https://github.com/kodmunki/ku4es-react-testing.git"
   },
   "license": "MIT",
   "engines": {
@@ -13,7 +12,7 @@
     "npm": "5.x"
   },
   "scripts": {
-    "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm install && npm run link",
+    "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm install",
     "test": "mocha -R spec --compilers js:babel-register --recursive ./test",
     "test-file": "mocha -R spec --compilers js:babel-register",
     "test-cov": "cross-env NODE_ENV=test nyc npm test",
@@ -22,10 +21,11 @@
     "lint-fix": "eslint --fix './src/**/*.js' './test/**/*.js'",
     "check": "npm run lint && npm run test-cov",
     "check-d": "npm run test-cov-d",
-    "build": "shx mkdir -p dist && babel src -d dist --source-maps inline",
-    "link": "sh ./link.sh"
+    "build": "shx mkdir -p dist && babel src -d dist --source-maps inline"
   },
   "dependencies": {
+    "@kodmunki/ku4es-kernel": "^1.0.1",
+    "@kodmunki/ku4es-ui-testing": "^1.0.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "moxios": "0.x",
@@ -61,5 +61,10 @@
     "./dist"
   ],
   "main": "./dist",
-  "false": {}
+  "false": {},
+  "bugs": {
+    "url": "https://github.com/kodmunki/ku4es-react-testing/issues"
+  },
+  "homepage": "https://github.com/kodmunki/ku4es-react-testing#readme",
+  "author": "kodmunki"
 }
