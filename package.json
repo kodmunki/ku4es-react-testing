@@ -1,6 +1,6 @@
 {
   "name": "@kodmunki/ku4es-react-testing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "kodmunki™ Unitilities for ECMAScript React Testing",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@kodmunki/ku4es-ui-testing": "^1.0.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "cheerio": "1.0.0-rc.2",
     "moxios": "0.x",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -45,7 +46,6 @@
     "babel-preset-react": "6.x",
     "babel-preset-stage-0": "6.x",
     "babel-register": "6.x",
-    "cheerio": "1.0.0-rc.2",
     "cross-env": "^5.1.1",
     "eslint": "^4.12.1",
     "eslint-plugin-import": "^2.8.0",
