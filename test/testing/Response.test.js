@@ -5,59 +5,59 @@ import Response from '../../src/testing/Response';
 describe('Response Test', () => {
 
   it('should be success', () => {
-    const payload = { value: 'value' };
-    const response = Response.success(payload);
+    const response = { value: 'value' };
+    const value = Response.success(response);
 
-    assert.equal(response.status, 200);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 200);
+    assert.deepEqual(value.response, response);
   });
 
   it('should be unauthorized', () => {
-    const payload = { value: 'value' };
-    const response = Response.unauthorized(payload);
+    const response = { value: 'value' };
+    const value = Response.unauthorized(response);
 
-    assert.equal(response.status, 401);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 401);
+    assert.deepEqual(value.response, response);
   });
 
   it('should be forbidden', () => {
-    const payload = { value: 'value' };
-    const response = Response.forbidden(payload);
+    const response = { value: 'value' };
+    const value = Response.forbidden(response);
 
-    assert.equal(response.status, 403);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 403);
+    assert.deepEqual(value.response, response);
   });
 
   it('should be fileNotFound', () => {
-    const payload = { value: 'value' };
-    const response = Response.fileNotFound(payload);
+    const response = { value: 'value' };
+    const value = Response.fileNotFound(response);
 
-    assert.equal(response.status, 404);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 404);
+    assert.deepEqual(value.response, response);
   });
 
   it('should be internalServerError', () => {
-    const payload = { value: 'value' };
-    const response = Response.internalServerError(payload);
+    const response = { value: 'value' };
+    const value = Response.internalServerError(response);
 
-    assert.equal(response.status, 500);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 500);
+    assert.deepEqual(value.response, response);
   });
 
   it('should be serviceUnavailable', () => {
-    const payload = { value: 'value' };
-    const response = Response.serviceUnavailable(payload);
+    const response = { value: 'value' };
+    const value = Response.serviceUnavailable(response);
 
-    assert.equal(response.status, 503);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 503);
+    assert.deepEqual(value.response, response);
   });
 
   it('should be gatewayTimeout', () => {
-    const payload = { value: 'value' };
-    const response = Response.gatewayTimeout(payload);
+    const response = { value: 'value' };
+    const value = Response.gatewayTimeout(response);
 
-    assert.equal(response.status, 504);
-    assert.deepEqual(response.payload, payload);
+    assert.equal(value.status, 504);
+    assert.deepEqual(value.response, response);
   });
 
 });

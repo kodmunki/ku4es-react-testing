@@ -1,31 +1,31 @@
 export default class Response {
 
-  static success(payload) {
-    return { status: 200, payload };
+  static success(response) {
+    return { status: 200, response };
   }
 
-  static unauthorized(payload) {
-    return { status: 401, payload };
+  static unauthorized(response) {
+    return { status: 401, response };
   }
 
-  static forbidden(payload) {
-    return { status: 403, payload };
+  static forbidden(response) {
+    return { status: 403, response };
   }
 
-  static fileNotFound(payload) {
-    return { status: 404, payload };
+  static fileNotFound(response) {
+    return { status: 404, response };
   }
 
-  static internalServerError(payload) {
-    return { status: 500, payload };
+  static internalServerError(response) {
+    return { status: 500, response };
   }
 
-  static serviceUnavailable(payload) {
-    return { status: 503, payload };
+  static serviceUnavailable(response) {
+    return { status: 503, response };
   }
 
-  static gatewayTimeout(payload) {
-    return { status: 504, payload };
+  static gatewayTimeout(response) {
+    return { status: 504, response };
   }
 
 }
