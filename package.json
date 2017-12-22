@@ -1,6 +1,6 @@
 {
   "name": "@kodmunki/ku4es-react-testing",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "kodmunki™ Unitilities for ECMAScript React Testing",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@kodmunki/ku4es-ui-testing": "^1.0.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "bluebird": "^3.5.1",
     "cheerio": "1.0.0-rc.2",
     "moxios": "0.x",
     "react": "^16.2.0",

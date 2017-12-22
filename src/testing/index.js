@@ -6,6 +6,7 @@ import {
   click as domClick,
   keyUp as domKeyUp
 } from '@kodmunki/ku4es-ui-testing';
+import { Promise } from 'bluebird';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import moxios from 'moxios';

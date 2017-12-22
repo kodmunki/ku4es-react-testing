@@ -151,11 +151,9 @@ describe('index Test', () => {
         assert.deepEqual(response.data, { test: 'data' });
       });
     sendResponse({ status: 200, response: { test: 'data' } })
-      .then((response) => {
-        assert.deepEqual(response.data, { test: 'data' });
-        stopServer();
-        done();
-      });
+      .tap(response => assert.deepEqual(response.data, { test: 'data' }))
+      .then(stopServer)
+      .then(done);
   });
 
   it('should send multiple responses', (done) => {
