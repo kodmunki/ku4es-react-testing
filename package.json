@@ -14,14 +14,15 @@
   "scripts": {
     "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm install",
     "test": "mocha -R spec --require babel-register --recursive ./test",
-    "test-file": "mocha -R spec --compilers js:babel-register",
+    "test-file": "mocha -R spec --require js:babel-register",
     "test-cov": "cross-env NODE_ENV=test nyc npm test",
     "test-cov-d": "open -a 'Google Chrome' ./coverage/lcov-report/index.html",
     "lint": "eslint './src/**/*.js' './test/**/*.js'",
     "lint-fix": "eslint --fix './src/**/*.js' './test/**/*.js'",
     "check": "npm run lint && npm run test-cov",
     "check-d": "npm run test-cov-d",
-    "build": "shx mkdir -p dist && babel src -d dist --source-maps inline"
+    "build": "shx mkdir -p dist && babel src -d dist --source-maps inline",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "@kodmunki/ku4es-kernel": "^1.0.1",
