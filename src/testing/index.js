@@ -40,7 +40,6 @@ function unloadDom() {
 }
 
 /**
- *
  * @param component - A React Component to test, e.g. <ExampleComponent />
  * @returns {function(*=)} - Function that returns a jQuery style selection result augmented
  *  with a pointer to the component for component.destroy() call.

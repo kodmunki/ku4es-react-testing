@@ -9,6 +9,7 @@ describe('Context Test', () => {
 
   beforeEach(() => loadDom());
   afterEach(() => unloadDom());
+
   it('throws', () => {
     assert.throws(() => {
       renderComponent(
@@ -18,6 +19,7 @@ describe('Context Test', () => {
       );
     });
   });
+
   it('should update props', () => {
     const $ = renderComponent(<Context/>);
     $.component.state = null;
