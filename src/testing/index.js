@@ -67,6 +67,10 @@ function renderComponent(component) {
   return result.next().value;
 }
 
+function load(selectorResult, event) {
+  TestUtils.Simulate.load(findDom(selectorResult), event);
+}
+
 function change(selectorResult, event) {
   TestUtils.Simulate.change(findDom(selectorResult), event);
 }
@@ -128,6 +132,7 @@ export {
   loadSafeDom,
   unloadDom,
   renderComponent,
+  load,
   write,
   click,
   submit,

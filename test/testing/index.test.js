@@ -8,12 +8,13 @@ import {
   loadDom,
   loadSafeDom,
   unloadDom,
+  renderComponent,
+  load,
   click,
   change,
   keyDown,
   submit,
   write,
-  renderComponent,
   sendResponse
 } from '../../src/testing';
 import Component from '../stubs/ComponentStub';
@@ -37,6 +38,17 @@ describe('index Test', () => {
     assert.equal($('input').length, 1);
     assert.equal($('button').length, 1);
     $.component.destroy();
+    unloadDom();
+  });
+
+  it('should load', (done) => {
+    loadDom();
+    const onLoad = () => {
+      assert.ok(true);
+      done();
+    };
+    const $ = renderComponent(<Component onLoad={onLoad}/>);
+    load($('iframe'));
     unloadDom();
   });
 

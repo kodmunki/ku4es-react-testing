@@ -5,8 +5,14 @@ export default class ComponentStub extends Component {
 
   constructor(props) {
     super(props);
-    const { value = '', onClick = () => { }, onKeyDown = () => { }, onSubmit = () => { } } = this.props;
-    this.state = { value, onClick, onKeyDown, onSubmit };
+    const {
+      value = '',
+      onClick = () => { },
+      onKeyDown = () => { },
+      onSubmit = () => { },
+      onLoad = () => { }
+    } = this.props;
+    this.state = { value, onClick, onKeyDown, onSubmit, onLoad };
   }
 
   _onChange(e) {
@@ -26,12 +32,13 @@ export default class ComponentStub extends Component {
   }
 
   render() {
-    const { value, onClick, onKeyDown, onSubmit } = this.state;
+    const { value, onClick, onKeyDown, onSubmit, onLoad } = this.state;
     return(
       <div>
         <form onSubmit={onSubmit}>
           <input type="test" className="input" onChange={(e) => { this._onChange(e); }} onKeyDown={onKeyDown} value={value} />
           <button className="button" onClick={onClick}>press</button>
+          <iframe className="iframe" onLoad={onLoad} src="ku4es.react.testing.com" />
         </form>
       </div>
     );
