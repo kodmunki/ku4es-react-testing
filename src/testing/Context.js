@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 
 export default class Context extends React.Component {
 
+  /**
+   * @constructor Context
+   * @param props
+   */
   constructor(props) {
     super(props);
     this.state = props;
@@ -19,7 +23,9 @@ export default class Context extends React.Component {
    * $render() { return <MyComponent { ...this.state }/> }
    *
    * ```
-   *
+   * @memberOf Context
+   * @protected
+   * @instance
    * @returns {XML}
    */
   $render() {
@@ -40,7 +46,9 @@ export default class Context extends React.Component {
    * their target, prop-updating component after passing
    * `this.state` into the target component. For example:
    * `return(<MyComponent {...this.state}/>)`
-   *
+   * @memberOf Context
+   * @public
+   * @instance
    * @param value - Object literal of new props
    */
   updateChildProps(value) {
@@ -48,13 +56,22 @@ export default class Context extends React.Component {
   }
 
   /**
-   * This method exposes an expressive means to perform a rerendering
+   * Exposes an expressive means to perform a rerendering
    * of a this Context.
+   * @memberOf Context
+   * @public
+   * @instance
    */
   rerender() {
     this.forceUpdate();
   }
 
+  /**
+   * Clean up this component and cover `unmount`
+   * @memberOf Context
+   * @public
+   * @instance
+   */
   destroy() {
     const node = ReactDOM.findDOMNode(this);
     node && ReactDOM.unmountComponentAtNode(node.parentNode);

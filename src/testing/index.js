@@ -13,26 +13,65 @@ import moxios from 'moxios';
 import cheerio from 'cheerio';
 import TestEvent from './Event';
 
+/**
+ * Starts a mock server for Unit Tests that cover code sections
+ * that include calls to a server. This must be called before
+ * you can successfully use `sendResponse`.
+ * @function startServer
+ * @global
+ */
 function startServer() {
   moxios.install();
 }
 
+/**
+ * Stops a mock server started with `startServer`
+ * @function stopServer
+ * @global
+ */
 function stopServer() {
   moxios.uninstall();
 }
 
+/**
+ * Loads a fully functional, unsecure, in-memory headless DOM.
+ * Note that you should only load this DOM if you know what
+ * you are loading into it, and what your test will be executing.
+ * This DOM can load external images and will run script. This
+ * does expose the ability for malicious code to potentially
+ * access your OS through Node.
+ * @function loadDom
+ * @global
+ * @param {string} [markup] - Optional initialization markup.
+ * @param {Object} [config] - JSDom configuration options.
+ */
 function loadDom(markup, config) {
   startServer();
   loadTestDom(markup, config);
   require('fbjs/lib/ExecutionEnvironment').canUseDOM = true;
 }
 
+/**
+ * Load a secure in-memory headless DOM. Note that there are no
+ * security guarantees with this DOM, though it does not allow for
+ * image loading or running scripts, negating these avenues as
+ * potential attack vectors for malicious code.
+ * @function loadSafeDom
+ * @global
+ * @param {string} [markup] - Optional initialization markup.
+ * @param {Object} [config] - JSDom configuration options.
+ */
 function loadSafeDom(markup, config) {
   startServer();
   loadSafeTestDom(markup, config);
   require('fbjs/lib/ExecutionEnvironment').canUseDOM = true;
 }
 
+/**
+ * Unloads a DOM loaded with `loadDom` or `loadSafeDom`
+ * @function unloadDom
+ * @global
+ */
 function unloadDom() {
   ReactDOM.unmountComponentAtNode(document.body);
   unloadTestDom();
@@ -40,9 +79,12 @@ function unloadDom() {
 }
 
 /**
- * @param component - A React Component to test, e.g. <ExampleComponent />
+ * Renders a component into a DOM loaded with `loadDom` or `loadSafeDom`
+ * @function renderComponent
+ * @global
+ * @param {Component} component - A React Component to test, e.g. <ExampleComponent />
  * @returns {function(*=)} - Function that returns a jQuery style selection result augmented
- *  with a pointer to the component for component.destroy() call.
+ *  with a local member `component` that returns a pointer to the rendered Component.
  */
 function renderComponent(component) {
   const result = (function *(){
@@ -100,6 +142,16 @@ function write(selectorResult, value) {
   }));
 }
 
+/**
+ *
+ * @param {Object} response - A response object
+ * @param {number} response.status - An HTTP status code.
+ * @param {Object} response.response - A mock response payload.
+ * @param {number} [index=0] - The index of the response that you want to send.
+ * This is useful for those instances where your codebase makes multiple service
+ * calls and you need to send responses back to some or all of them.
+ * @returns {*}
+ */
 function sendResponse(response, index = 0) {
   return new Promise((resolve, reject) => {
     moxios.wait(() => {
