@@ -29,8 +29,8 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@kodmunki/ku4es-kernel": "^1.0.1",
-    "@kodmunki/ku4es-ui-testing": "^1.0.1",
+    "@kodmunki/ku4es-kernel": "^1.4.0",
+    "@kodmunki/ku4es-ui-testing": "^1.4.0",
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
