@@ -4,9 +4,9 @@
     "transform-react-jsx-source"
   ],
   "presets": [
-    "es2015",
+    "env",
     "react",
-    "stage-0"
+    "stage-3"
   ],
   "env": {
     "test": {
