@@ -2,9 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import assert from 'assert';
 import { describe, it } from 'mocha';
+import { startServer, stopServer, sendResponse } from '@kodmunki/ku4es-testing';
 import {
-  startServer,
-  stopServer,
   loadDom,
   loadSafeDom,
   unloadDom,
@@ -14,8 +13,7 @@ import {
   change,
   keyDown,
   submit,
-  write,
-  sendResponse
+  write
 } from '../../src/testing';
 import Component from '../stubs/ComponentStub';
 

@@ -1,4 +1,5 @@
 import { Assert } from '@kodmunki/ku4es-kernel';
+import { startServer, stopServer } from '@kodmunki/ku4es-testing';
 import {
   loadDom as loadTestDom,
   loadSafeDom as loadSafeTestDom,
@@ -6,32 +7,10 @@ import {
   click as domClick,
   keyUp as domKeyUp
 } from '@kodmunki/ku4es-ui-testing';
-import { Promise } from 'bluebird';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
-import moxios from 'moxios';
 import cheerio from 'cheerio';
 import TestEvent from './Event';
-
-/**
- * Starts a mock server for Unit Tests that cover code sections
- * that include calls to a server. This must be called before
- * you can successfully use `sendResponse`.
- * @function startServer
- * @global
- */
-function startServer() {
-  moxios.install();
-}
-
-/**
- * Stops a mock server started with `startServer`
- * @function stopServer
- * @global
- */
-function stopServer() {
-  moxios.uninstall();
-}
 
 /**
  * Loads a fully functional, unsecure, in-memory headless DOM.
@@ -142,29 +121,6 @@ function write(selectorResult, value) {
   }));
 }
 
-/**
- *
- * @param {Object} response - A response object
- * @param {number} response.status - An HTTP status code.
- * @param {Object} response.response - A mock response payload.
- * @param {number} [index=0] - The index of the response that you want to send.
- * This is useful for those instances where your codebase makes multiple service
- * calls and you need to send responses back to some or all of them.
- * @returns {*}
- */
-function sendResponse(response, index = 0) {
-  return new Promise((resolve, reject) => {
-    moxios.wait(() => {
-      const tracker = moxios.requests;
-      const request = tracker.at(index);
-      tracker.__items.splice(index, 1);
-      request.respondWith(response)
-        .then(resolve)
-        .catch(reject);
-    });
-  });
-}
-
 function findDom(selectorResult) {
   try {
     const className = selectorResult.attr('class');
@@ -178,8 +134,6 @@ function findDom(selectorResult) {
 }
 
 export {
-  startServer,
-  stopServer,
   loadDom,
   loadSafeDom,
   unloadDom,
@@ -191,6 +145,5 @@ export {
   keyDown,
   change,
   domClick,
-  domKeyUp,
-  sendResponse
+  domKeyUp
 };
