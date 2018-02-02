@@ -8,9 +8,7 @@ import {
   click,
   submit,
   keyDown,
-  change,
-  domClick,
-  domKeyUp
+  change
 } from './testing';
 import Context from './testing/Context';
 import ErrorComponent from './testing/ErrorComponent';
@@ -30,8 +28,6 @@ export {
   submit,
   keyDown,
   change,
-  domClick,
-  domKeyUp,
   Context,
   Dispatcher,
   ErrorComponent,

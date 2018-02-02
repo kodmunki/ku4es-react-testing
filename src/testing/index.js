@@ -3,9 +3,7 @@ import { startServer, stopServer } from '@kodmunki/ku4es-testing';
 import {
   loadDom as loadTestDom,
   loadSafeDom as loadSafeTestDom,
-  unloadDom as unloadTestDom,
-  click as domClick,
-  keyUp as domKeyUp
+  unloadDom as unloadTestDom
 } from '@kodmunki/ku4es-ui-testing';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
@@ -143,7 +141,5 @@ export {
   click,
   submit,
   keyDown,
-  change,
-  domClick,
-  domKeyUp
+  change
 };
