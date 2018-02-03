@@ -8,14 +8,6 @@
 ## Functions
 
 <dl>
-<dt><a href="#startServer">startServer()</a></dt>
-<dd><p>Starts a mock server for Unit Tests that cover code sections
-that include calls to a server. This must be called before
-you can successfully use <code>sendResponse</code>.</p>
-</dd>
-<dt><a href="#stopServer">stopServer()</a></dt>
-<dd><p>Stops a mock server started with <code>startServer</code></p>
-</dd>
 <dt><a href="#loadDom">loadDom([markup], [config])</a></dt>
 <dd><p>Loads a fully functional, unsecure, in-memory headless DOM.
 Note that you should only load this DOM if you know what
@@ -36,8 +28,6 @@ potential attack vectors for malicious code.</p>
 <dt><a href="#renderComponent">renderComponent(component)</a> ⇒ <code>function</code></dt>
 <dd><p>Renders a component into a DOM loaded with <code>loadDom</code> or <code>loadSafeDom</code></p>
 </dd>
-<dt><a href="#sendResponse">sendResponse(response, [index])</a> ⇒ <code>*</code></dt>
-<dd></dd>
 </dl>
 
 <a name="Context"></a>
@@ -110,20 +100,6 @@ Clean up this component and cover `unmount`
 
 **Kind**: instance method of [<code>Context</code>](#Context)  
 **Access**: public  
-<a name="startServer"></a>
-
-## startServer()
-Starts a mock server for Unit Tests that cover code sections
-that include calls to a server. This must be called before
-you can successfully use `sendResponse`.
-
-**Kind**: global function  
-<a name="stopServer"></a>
-
-## stopServer()
-Stops a mock server started with `startServer`
-
-**Kind**: global function  
 <a name="loadDom"></a>
 
 ## loadDom([markup], [config])
@@ -174,16 +150,4 @@ Renders a component into a DOM loaded with `loadDom` or `loadSafeDom`
 | Param | Type | Description |
 | --- | --- | --- |
 | component | <code>Component</code> | A React Component to test, e.g. <ExampleComponent /> |
-
-<a name="sendResponse"></a>
-
-## sendResponse(response, [index]) ⇒ <code>\*</code>
-**Kind**: global function  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| response | <code>Object</code> |  | A response object |
-| response.status | <code>number</code> |  | An HTTP status code. |
-| response.response | <code>Object</code> |  | A mock response payload. |
-| [index] | <code>number</code> | <code>0</code> | The index of the response that you want to send. This is useful for those instances where your codebase makes multiple service calls and you need to send responses back to some or all of them. |
 
