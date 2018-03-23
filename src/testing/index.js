@@ -64,7 +64,7 @@ function unloadDom() {
  *  with a local member `component` that returns a pointer to the rendered Component.
  */
 function renderComponent(component) {
-  const result = (function *(){
+  const result = (function* (){
     let _component;
     const root = document.createElement('div');
     const data = document.createAttribute('data-root');
