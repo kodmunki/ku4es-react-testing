@@ -1,12 +1,11 @@
 {
   "plugins": [
-    "transform-runtime",
-    "transform-react-jsx-source"
+    "@babel/transform-runtime",
+    "@babel/transform-react-jsx-source"
   ],
   "presets": [
-    "env",
-    "react",
-    "stage-3"
+    "@babel/env",
+    "@babel/react"
   ],
   "env": {
     "test": {
