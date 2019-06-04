@@ -1,10 +1,10 @@
-import { Assert } from '@kodmunki/ku4es-kernel';
-import { startServer, stopServer } from '@kodmunki/ku4es-testing';
+import { Assert } from 'ku4es-kernel';
+import { startServer, stopServer } from 'ku4es-testing';
 import {
   loadDom as loadTestDom,
   loadSafeDom as loadSafeTestDom,
   unloadDom as unloadTestDom
-} from '@kodmunki/ku4es-ui-testing';
+} from 'ku4es-ui-testing';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import cheerio from 'cheerio';
