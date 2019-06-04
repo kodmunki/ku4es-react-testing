@@ -1,6 +1,6 @@
 {
   "name": "ku4es-react-testing",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "kodmunki™ Utilities for ECMAScript React Testing",
   "repository": {
     "type": "git",
@@ -12,9 +12,9 @@
     "npm": "6.x"
   },
   "scripts": {
-    "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm install",
-    "test": "mocha -R spec --require babel-register --recursive ./test",
-    "test-file": "mocha -R spec --require js:babel-register",
+    "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm i",
+    "test": "mocha --timeout 5000 -R spec --require @babel/register --recursive ./test",
+    "test-file": "mocha -R spec --require @babel/register",
     "test-cov": "NODE_ENV=test nyc npm test",
     "test-cov-d": "open -a 'Google Chrome' ./coverage/lcov-report/index.html",
     "lint": "eslint './src/**/*.js' './test/**/*.js'",
@@ -25,16 +25,16 @@
     "docs-read": "open -a 'Google Chrome' ./jsdoc/index.html",
     "jsdocs": "rm -rf jsdoc ; jsdoc -c ./jsdoc.json",
     "mddocs": "rm README.API.md ; jsdoc2md --files 'src/**/*.js' > README.API.md",
-    "build": "mkdir -p dist && babel src -d dist --source-maps inline",
+    "build": "rm -rf dist && mkdir -p dist && babel src -d dist --source-maps inline",
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@kodmunki/ku4es-testing": "^1.2.6",
-    "@kodmunki/ku4es-ui-testing": "^1.4.1",
-    "bluebird": "^3.5.4",
+    "bluebird": "^3.5.5",
     "cheerio": "^1.0.0-rc.3",
-    "jsdom": "^15.0.0",
-    "ku4es-kernel": "^4.0.0",
+    "jsdom": "^15.1.1",
+    "ku4es-kernel": "^5.1.0",
+    "ku4es-testing": "^1.3.1",
+    "ku4es-ui-testing": "^1.6.0",
     "react": "^16.8.6",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.8.6",
@@ -42,22 +42,22 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-transform-react-jsx-source": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
+    "@babel/runtime": "^7.4.5",
     "babel-eslint": "^10.0.1",
     "babel-plugin-istanbul": "^5.1.2",
     "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-react": "^7.13.0",
-    "jsdoc-to-markdown": "^4.0.0",
+    "jsdoc-to-markdown": "^5.0.0",
     "mocha": "^6.1.3",
-    "nyc": "^14.1.0"
+    "nyc": "^14.1.1"
   },
   "files": [
     "dist"
