@@ -1,6 +1,6 @@
 {
   "name": "ku4es-react-testing",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "kodmunki™ Utilities for ECMAScript React Testing",
   "repository": {
     "type": "git",
@@ -28,17 +28,22 @@
     "build": "rm -rf dist && mkdir -p dist && babel src -d dist --source-maps inline",
     "prepare": "npm run build"
   },
+  "pre-commit": [
+    "lint-fix",
+    "test-cov"
+  ],
   "dependencies": {
     "bluebird": "^3.5.5",
     "cheerio": "^1.0.0-rc.3",
+    "fbjs": "^1.0.0",
     "jsdom": "^15.1.1",
-    "ku4es-kernel": "^5.1.0",
-    "ku4es-testing": "^1.3.1",
-    "ku4es-ui-testing": "^1.6.0",
+    "ku4es-kernel": "^5.1.1",
+    "ku4es-testing": "^1.4.0",
+    "ku4es-ui-testing": "^1.6.1",
     "react": "^16.8.6",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -57,7 +62,8 @@
     "eslint-plugin-react": "^7.13.0",
     "jsdoc-to-markdown": "^5.0.0",
     "mocha": "^6.1.3",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "pre-commit": "^1.2.2"
   },
   "files": [
     "dist"
