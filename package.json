@@ -36,7 +36,7 @@
     "bluebird": "^3.5.5",
     "cheerio": "^1.0.0-rc.3",
     "fbjs": "^1.0.0",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "ku4es-kernel": "^5.1.1",
     "ku4es-testing": "^1.4.0",
     "ku4es-ui-testing": "^1.6.1",
